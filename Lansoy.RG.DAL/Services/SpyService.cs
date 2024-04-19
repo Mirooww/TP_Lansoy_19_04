@@ -13,7 +13,6 @@ namespace Lansoy.RG.DAL.Services
     {
         Task AddSpyAsync(string nom, string nomDeCode);
         Task AddMissionToSpyAsync(string nomDeCode, string ville, int annee);
-        // Autres méthodes selon les besoins
     }
 
     public class SpyService : ISpyService
