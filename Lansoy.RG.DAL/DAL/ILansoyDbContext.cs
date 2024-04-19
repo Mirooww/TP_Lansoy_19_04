@@ -7,6 +7,12 @@ namespace Lansoy.RG.DAL.DAL
         DbSet<Espion> Espions { get; }
         DbSet<Mission> Missions { get; }
 
+        DbSet<Espion> Villes { get; }
+
+        List<Espion> GetEspions();
+
+        List<Espion> GetVille();
+
         Task SaveChangesAsync();
     }
 }

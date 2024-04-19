@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lansoy.RG.DAL.Migrations
 {
     [DbContext(typeof(LansoyDbContext))]
-    [Migration("20240419125701_InitialCreate2")]
-    partial class InitialCreate2
+    [Migration("20240419144944_Props")]
+    partial class Props
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,9 +42,28 @@ namespace Lansoy.RG.DAL.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
+                    b.Property<string>("Ville")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("EspionId");
 
                     b.ToTable("Espions");
+                });
+
+            modelBuilder.Entity("EspionEspion", b =>
+                {
+                    b.Property<int>("EspionsEspionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VillesEspionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EspionsEspionId", "VillesEspionId");
+
+                    b.HasIndex("VillesEspionId");
+
+                    b.ToTable("EspionEspion");
                 });
 
             modelBuilder.Entity("EspionMission", b =>
@@ -80,6 +99,21 @@ namespace Lansoy.RG.DAL.Migrations
                     b.HasKey("MissionId");
 
                     b.ToTable("Missions");
+                });
+
+            modelBuilder.Entity("EspionEspion", b =>
+                {
+                    b.HasOne("Espion", null)
+                        .WithMany()
+                        .HasForeignKey("EspionsEspionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Espion", null)
+                        .WithMany()
+                        .HasForeignKey("VillesEspionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EspionMission", b =>

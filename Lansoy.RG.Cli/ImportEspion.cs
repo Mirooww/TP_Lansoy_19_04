@@ -20,12 +20,13 @@ namespace Lansoy.RG.Cli
             foreach (var ligne in lignes)
             {
                 var donnees = ligne.Split(';');
-                if (donnees.Length >= 2)
+                if (donnees.Length >= 3)
                 {
                     var espion = new Espion
                     {
                         Nom = donnees[0],
-                        NomDeCode = donnees[1]
+                        NomDeCode = donnees[1],
+                        Ville = donnees[2]
                     };
                     _dbContext.Espions.Add(espion);
                 }

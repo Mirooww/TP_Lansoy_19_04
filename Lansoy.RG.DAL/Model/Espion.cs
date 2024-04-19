@@ -11,5 +11,8 @@ public class Espion
 
     [MaxLength(50)]
     public string NomDeCode { get; set; } 
+    public string Ville { get; set; } 
     public List<Mission> Missions { get; } = new List<Mission>();
+    public List<Espion> Espions { get; } = new List<Espion>();
+
 }

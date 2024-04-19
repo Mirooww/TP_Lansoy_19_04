@@ -6,7 +6,7 @@ public class Mission
     public int MissionId { get; set; }
 
     [Required]
-    public string Lieu { get; set; } // Le nom de la ville
+    public string Lieu { get; set; } 
 
     [Required]
     public int Annee { get; set; }

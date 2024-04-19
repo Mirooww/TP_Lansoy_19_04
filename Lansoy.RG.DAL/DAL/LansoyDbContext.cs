@@ -10,8 +10,18 @@ namespace Lansoy.RG.DAL.DAL
     public class LansoyDbContext : DbContext, ILansoyDbContext
     {
         public DbSet<Espion> Espions { get; set; }
+        public DbSet<Espion> Villes { get; set; }
         public DbSet<Mission> Missions { get; set; }
 
+
+        public List<Espion> GetEspions()
+        {
+            return this.Espions.ToList();
+        }
+        public List<Espion> GetVille()
+        {
+            return this.Villes.ToList();
+        }
         public Task SaveChangesAsync()
         {
             throw new NotImplementedException();
